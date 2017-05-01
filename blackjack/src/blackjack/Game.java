@@ -19,6 +19,11 @@ public class Game
         this.RandomList = randomNumber(this.Deck);
     }
 
+    public void StartGame()
+    {
+
+    }
+
     public int GetRandomNumber()
     {
         Random r = new Random();
