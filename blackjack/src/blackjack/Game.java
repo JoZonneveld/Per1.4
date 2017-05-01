@@ -4,16 +4,32 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-/**
- * Created by Joost on 30-4-2017.
- */
-
 
 public class Game
 {
 
+    public List<Cards> Deck;
+    public List<Integer> RandomList;
+    public Player player;
 
-    public List<Integer> randomNumber(List<Cards> deck)
+    public Game()
+    {
+        this.player = new Player();
+        this.Deck = CreateDeck();
+        this.RandomList = randomNumber(this.Deck);
+    }
+
+    public int GetRandomNumber()
+    {
+        Random r = new Random();
+
+        int number = RandomList.get(r.nextInt(RandomList.size()));
+        RandomList.remove(number);
+
+        return number;
+    }
+
+    private List<Integer> randomNumber(List<Cards> deck)
     {
         List<Integer> random = new ArrayList<Integer>();
 
@@ -26,7 +42,7 @@ public class Game
 
     }
 
-    public List<Cards> CreateDeck()
+    private List<Cards> CreateDeck()
     {
         List<Cards> deck = new ArrayList<Cards>(); //card deck
 

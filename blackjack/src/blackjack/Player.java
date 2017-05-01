@@ -6,4 +6,9 @@ package blackjack;
 public class Player {
     public int hand;
 
+    public Player()
+    {
+
+    }
+
 }

@@ -9,19 +9,16 @@ public class Main {
         boolean game = true;
         Game start = new Game();
 
-        List<Cards> deck = start.CreateDeck();
-        List<Integer>random = start.randomNumber(deck);
 
-        Random r = new Random();
-
-        while(game)
+        while(true)
         {
-            int number = random.get(r.nextInt(random.size()));
-            random.remove(number);
+            System.out.println(start.RandomList);
+            int number = start.GetRandomNumber();
             System.out.println(number);
-
-            System.out.println(random);
+            System.out.println(start.RandomList);
         }
+
+
 
     }
 }
