@@ -15,12 +15,5 @@ public class Cards
         this.kind = Kind;
         this.number = Number;
         this.value = Value;
-        this.availeble = true;
     }
-
-    public void draw()
-    {
-        this.availeble = false;
-    } // cards is not availeble anymore
-
 }
