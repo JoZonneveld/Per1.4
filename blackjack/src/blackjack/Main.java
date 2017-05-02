@@ -7,18 +7,11 @@ public class Main {
     public static void main(String[] args)
     {
         boolean game = true;
-        Game start = new Game();
+        Game start = new Game("Joost");
 
+        System.out.println("Welkom " + start.player.Name);
+        System.out.println("Let us play a game ");
 
-        while(true)
-        {
-            System.out.println(start.RandomList);
-            int number = start.GetRandomNumber();
-            System.out.println(number);
-            System.out.println(start.RandomList);
-        }
-
-
-
+        start.addCard();
     }
 }

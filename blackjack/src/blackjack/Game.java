@@ -12,16 +12,27 @@ public class Game
     public List<Integer> RandomList;
     public Player player;
 
-    public Game()
+    public Game(String name)
     {
-        this.player = new Player();
+        this.player = new Player(name);
         this.Deck = CreateDeck();
         this.RandomList = randomNumber(this.Deck);
     }
 
     public void StartGame()
     {
+        //Start the game fill the players hand with 2 cards
+//        for(int i = 0; i < 2; i++)
+//        {
+//            this.addCard();
+//        }
+        addCard();
+    }
 
+    public void addCard()
+    {
+        //int number = GetRandomNumber();
+        player.Hand.add(Deck.get(1));
     }
 
     public int GetRandomNumber()

@@ -21,6 +21,6 @@ public class Cards
     public void draw()
     {
         this.availeble = false;
-    }
+    } // cards is not availeble anymore
 
 }
