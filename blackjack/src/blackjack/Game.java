@@ -9,43 +9,30 @@ public class Game
 {
 
     public List<Cards> Deck;
-    public List<Integer> RandomList;
     public Player player;
 
     public Game(String name)
     {
         this.player = new Player(name);
         this.Deck = CreateDeck();
-        this.RandomList = randomNumber(this.Deck);
     }
 
     public void StartGame()
     {
         //Start the game fill the players hand with 2 cards
-//        for(int i = 0; i < 2; i++)
-//        {
-//            this.addCard();
-//        }
-        addCard();
+        for(int i = 0; i < 2; i++)
+        {
+            this.DrawCard();
+        }
     }
 
-    public void addCard()
+    public void DrawCard()
     {
-        //int number = GetRandomNumber();
-        player.Hand.add(Deck.get(1));
+        int number = randomNumber(this.Deck);
+        player.Hand.add(Deck.get(number));
     }
 
-    public int GetRandomNumber()
-    {
-        Random r = new Random();
-
-        int number = RandomList.get(r.nextInt(RandomList.size()));
-        RandomList.remove(number);
-
-        return number;
-    }
-
-    private List<Integer> randomNumber(List<Cards> deck)
+    public int randomNumber(List<Cards> deck)
     {
         List<Integer> random = new ArrayList<Integer>();
 
@@ -54,7 +41,13 @@ public class Game
             random.add(i);
         }
 
-        return random;
+        Random r = new Random();
+
+        int number = random.get(r.nextInt(random.size()));
+
+        Deck.remove(number);
+
+        return number;
 
     }
 

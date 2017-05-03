@@ -8,7 +8,6 @@ public class Cards
     public String kind;
     public String number;
     public int value;
-    public boolean availeble;
 
     public Cards(String Kind, String Number, int Value)
     {
