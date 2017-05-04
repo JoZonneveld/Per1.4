@@ -3,14 +3,26 @@ package blackjack;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Player implements IPlayer {
+public class Bot implements IPlayer
+{
     public List<Cards> Hand;
     public String Name;
+    public int Count;
 
-    public Player(String name)
+    public Bot()
     {
-        this.Name = name;
-        this.Hand = CreateHand();
+        this.Name = "Bot Harold";
+        //this.Hand = CreateHand();
+    }
+
+    public void CountPlus()
+    {
+        this.Count++;
+    }
+
+    public void CountMin()
+    {
+        this.Count--;
     }
 
     public int CheckHand()
