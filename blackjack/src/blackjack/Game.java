@@ -9,13 +9,11 @@ public class Game
 {
 
     public List<Cards> Deck;
-    public IPlayer player;
-    public IPlayer bot;
+    public Player player;
 
     public Game(String name)
     {
         this.player = new Player(name);
-        this.bot = new Bot();
         this.Deck = CreateDeck();
     }
 
@@ -24,14 +22,14 @@ public class Game
         //Start the game fill the players hand with 2 cards
         for(int i = 0; i < 2; i++)
         {
-            this.DrawCard(this.player);
-            this.DrawCard(this.bot);
+            this.DrawCard();
         }
     }
 
-    public void DrawCard(IPlayer DrawIPlayer)
+    public void DrawCard()
     {
         int number = randomNumber(this.Deck);
+        this.player.Hand.add(this.Deck.get(number));
     }
 
     public int randomNumber(List<Cards> deck)

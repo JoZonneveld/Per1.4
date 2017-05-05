@@ -3,7 +3,7 @@ package blackjack;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Player implements IPlayer {
+public class Player {
     public List<Cards> Hand;
     public String Name;
 
@@ -34,7 +34,7 @@ public class Player implements IPlayer {
         return output;
     }
 
-    public List<Cards> CreateHand()
+    private List<Cards> CreateHand()
     {
         List<Cards> hand = new ArrayList<Cards>(); //card deck
 
