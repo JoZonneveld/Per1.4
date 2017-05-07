@@ -17,30 +17,37 @@ namespace Blackjack
 
         public void Draw(int i)
         {
-            throw new NotImplementedException();
+            Playerhand.RemoveAt(i);
         }
 
         public void Add(Cards card)
         {
-            throw new NotImplementedException();
+            Playerhand.Add(card);
         }
 
-        public void getTotal()
+        public int getTotal()
         {
-            throw new NotImplementedException();
+            int output = 0;
+            for (int i = 0; i < Playerhand.Count; i++)
+            {
+                output += Playerhand[i].value;
+            }
+            return output;
         }
 
         public int Average()
         {
-            throw new NotImplementedException();
+            int count = 0;
+            int a = 0;
+            for (int i = 0; i < Playerhand.Count; i++)
+            {
+                count += Playerhand[i].value;
+                a++;
+            }
+            return count / a;
         }
         
         public int ChanceExact(int card)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Cards RandomCard()
         {
             throw new NotImplementedException();
         }

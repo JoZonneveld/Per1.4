@@ -92,9 +92,14 @@ namespace Blackjack
             CardList.Add(card);
         }
 
-        public void getTotal()
+        public int getTotal()
         {
-            throw new NotImplementedException();
+            int output = 0;
+            for (int i = 0; i < CardList.Count; i++)
+            {
+                output += CardList[i].value;
+            }
+            return output;
         }
 
         public int Average()
@@ -121,12 +126,6 @@ namespace Blackjack
             }
             int output = (int)Math.Round((double)(100 * amount) / CardList.Count);
             return output;
-        }
-        
-
-        public Cards RandomCard()
-        {
-            return null;
         }
     }
 }

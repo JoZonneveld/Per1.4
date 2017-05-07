@@ -15,14 +15,60 @@ namespace Blackjack
 
         static void Main(string[] args)
         {
-            IDeck deck = new Deck();
-            IPlayer player = new Player("Joost");
+            bool Game = true;
+            Console.Out.WriteLine("Tell me your name");
+            string Name = Console.ReadLine();
 
-            Console.WriteLine(player.Hand.cardList.Count);
+            while (Game)
+            {
+                
+                Game game = new Game(Name);
+                game.StartGame();
 
-            Console.Out.WriteLine(deck.ChanceExact(10) + "%");
+                if (game.player.CheckHand() == 21 || game.bot.CheckHand() == 21)
+                {
+                    game.gameState = false;
+                }
 
-            End();
+                while (game.gameState)
+                {
+                    Console.Clear();
+                    game.CheckHands();
+
+                    Console.Out.WriteLine("Wilt u nog een kaart?");
+                    ConsoleKeyInfo card = Console.ReadKey();
+
+                    if (card.KeyChar == 'y')
+                    {
+                        game.Draw(game.player);
+                        if (game.player.CheckHand() < 22 && game.player.CheckHand() > game.bot.CheckHand())
+                        {
+                            game.Draw(game.bot);
+                        }
+                    }
+                    else
+                    {
+                        game.gameState = false;
+                    }
+
+                    if (game.player.CheckHand() == 21 || game.bot.CheckHand() == 21 || game.player.CheckHand() > 21 || game.bot.CheckHand()>21)
+                    {
+                        break;
+                    }
+                }
+
+                Console.Clear();
+
+                game.Winner();
+
+                Console.Out.WriteLine("Do you wanna play another game?");
+                ConsoleKeyInfo again = Console.ReadKey();
+
+                if (again.KeyChar == 'n')
+                {
+                    Game = false;
+                }
+            }
         }
     }
 }

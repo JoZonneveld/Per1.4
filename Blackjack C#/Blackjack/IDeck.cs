@@ -13,9 +13,8 @@ namespace Blackjack
 
         void Draw(int i);
         void Add(Cards card);
-        void getTotal();
+        int getTotal();
         int Average();
         int ChanceExact(int card);
-        Cards RandomCard();
     }
 }
