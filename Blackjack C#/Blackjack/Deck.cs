@@ -127,5 +127,10 @@ namespace Blackjack
             int output = (int)Math.Round((double)(100 * amount) / CardList.Count);
             return output;
         }
+
+        public int ChanceSave(int i)
+        {
+            
+        }
     }
 }

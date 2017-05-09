@@ -54,10 +54,17 @@ namespace Blackjack
             Deck.cardList.RemoveAt(i);
         }
 
+        public void DrawOnChance(IPlayer drawPlayer)
+        {
+            int i = Random();
+            Cards card = Deck.cardList[i];
+            drawPlayer.Hand.Add(card);
+            Deck.cardList.RemoveAt(i);
+        }
+
         public void CheckHands()
         {
             Console.Out.WriteLine(player.Name + "'s hand: " + player.CheckHand());
-            Console.Out.WriteLine("Bots hand: " + bot.CheckHand());
         }
 
         public void Winner()
