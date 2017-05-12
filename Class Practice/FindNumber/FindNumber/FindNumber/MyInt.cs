@@ -9,7 +9,7 @@ namespace FindNumber
 {
     class MyInt : INumber
     {
-        public void visit(INumberVisitor visitor)
+        public void visit<T>(INumberVisitor visitor)
         {
             visitor.onMyInt(this);
         }

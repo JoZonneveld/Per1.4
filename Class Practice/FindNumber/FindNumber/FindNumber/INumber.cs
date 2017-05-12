@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace FindNumber
 {
-    interface INumber<M>
+    interface INumber
     {
-        M visit(INumberVisitor visitor);
+        void visit<T>(INumberVisitor visitor);
     }
 }

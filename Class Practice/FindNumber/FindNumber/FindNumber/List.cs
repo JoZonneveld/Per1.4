@@ -10,23 +10,23 @@ namespace FindNumber
 
     interface IElement<T>
     {
-        T Visit<U>(IElementVisitor<T,U> ev);
+        U Visit<U>(IElementVisitor<T, U> ev);
     }
 
-    interface IElementVisitor<T,U>
+    internal abstract class IElementVisitor<T, U>
     {
-        U OnSome(T value);
-        U OnNone();
+        public abstract U OnSome(T value);
+        public abstract U OnNone();
     }
 
     class PrintElement : IElementVisitor<int, string>
     {
-        public string OnSome(int value)
+        public override string OnSome(int value)
         {
             return value.ToString();
         }
 
-        public string OnNone()
+        public override string OnNone()
         {
             return "empty";
         }
@@ -57,9 +57,9 @@ namespace FindNumber
         }
         
 
-        public T Visit<U>(IElementVisitor<T, U> ev)
+        public U Visit<U>(IElementVisitor<T, U> ev)
         {
-            return default(T);
+            return default(U);
         }
     }
 
@@ -89,7 +89,7 @@ namespace FindNumber
             return tail;
         }
         
-        public T Visit<U>(IElementVisitor<T, U> ev)
+        public U Visit<U>(IElementVisitor<T, U> ev)
         {
             return ev.OnSome(value);
         }

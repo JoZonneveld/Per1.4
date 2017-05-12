@@ -13,9 +13,11 @@ namespace FindNumber
         {
             IList<int> l = new Node<int>(1, new Node<int>(3, new Empty<int>()));
 
+            IElementVisitor<int, int> test = ;
+
             while (l.IsEmpty() == false)
             {
-                Console.WriteLine(l.Value());
+                Console.Out.WriteLine(l.Visit<int>(test));
                 l = l.Tail();
             }
             
