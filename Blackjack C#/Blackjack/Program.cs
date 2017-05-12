@@ -24,6 +24,7 @@ namespace Blackjack
                 
                 Game game = new Game(Name);
                 game.StartGame();
+                
 
                 if (game.player.CheckHand() == 21 || game.bot.CheckHand() == 21)
                 {
@@ -34,17 +35,26 @@ namespace Blackjack
                 {
                     Console.Clear();
                     game.CheckHands();
-
-                    Console.Out.WriteLine("Wilt u nog een kaart?");
-                    ConsoleKeyInfo card = Console.ReadKey();
-
-                    if (card.KeyChar == 'y')
+                    if (game.Player)
                     {
-                        game.Draw(game.player);
-                        if (game.player.CheckHand() < 22 && game.player.CheckHand() > game.bot.CheckHand())
+                        Console.Out.WriteLine("Wilt u nog een kaart?");
+                        ConsoleKeyInfo card = Console.ReadKey();
+
+                        if (card.KeyChar == 'y')
                         {
-                            game.Draw(game.bot);
+                            game.Draw(game.player);
+                            game.Bot = game.DrawOnChance(game.bot);
+
                         }
+                        else
+                        {
+                            game.Player = false;
+                            game.Bot = game.DrawOnChance(game.bot);
+                        }
+                    }
+                    else if (game.Bot)
+                    {
+                        game.Bot = game.DrawOnChance(game.bot);
                     }
                     else
                     {

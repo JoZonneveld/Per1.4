@@ -12,6 +12,8 @@ namespace Blackjack
         public IPlayer bot;
         public IDeck Deck;
         public bool gameState;
+        public bool Player;
+        public bool Bot;
 
         public Game(string name)
         {
@@ -19,6 +21,8 @@ namespace Blackjack
             this.bot = new Player("Hans");
             this.Deck = new Deck();
             this.gameState = true;
+            this.Player = true;
+            this.Bot = true;
         }
 
         private int Random()
@@ -54,12 +58,71 @@ namespace Blackjack
             Deck.cardList.RemoveAt(i);
         }
 
-        public void DrawOnChance(IPlayer drawPlayer)
+        public bool DrawOnChance(IPlayer drawPlayer)
         {
-            int i = Random();
-            Cards card = Deck.cardList[i];
-            drawPlayer.Hand.Add(card);
-            Deck.cardList.RemoveAt(i);
+            int diff = 21 - drawPlayer.CheckHand();
+
+            if (Player == false)
+            {
+                if (player.CheckHand() > 21)
+                {
+                    return false;
+                }
+                else if (player.CheckHand() < bot.CheckHand())
+                {
+                    return false;
+                }
+                else if (player.CheckHand() == bot.CheckHand() && Deck.ChanceSave(diff) == 100)
+                {
+                    Draw(drawPlayer);
+                    return true;
+                }
+                else if (player.CheckHand() > bot.CheckHand())
+                {
+                    Draw(drawPlayer);
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else if (Player)
+            {
+                if (player.CheckHand() > 21)
+                {
+                    return false;
+                }
+                else if (player.CheckHand() < bot.CheckHand())
+                {
+                    return false;
+                }
+                else if (player.CheckHand() > bot.CheckHand())
+                {
+                    Draw(drawPlayer);
+                    return true;
+                }
+                else if (player.CheckHand() == bot.CheckHand() && Deck.ChanceSave(diff) == 100)
+                {
+                    Draw(drawPlayer);
+                    return true;
+                }
+                else if (Deck.ChanceSave(diff) == 100)
+                {
+                    Draw(drawPlayer);
+                    return true;
+                }
+                else if ((Deck.ChanceExact(diff) > 75 || Deck.ChanceSave(diff) > 50))
+                {
+                    Draw(drawPlayer);
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return false;
         }
 
         public void CheckHands()

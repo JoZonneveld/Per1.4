@@ -16,5 +16,6 @@ namespace Blackjack
         int getTotal();
         int Average();
         int ChanceExact(int card);
+        int ChanceSave(int Hand);
     }
 }

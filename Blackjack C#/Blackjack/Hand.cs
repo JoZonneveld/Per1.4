@@ -51,5 +51,10 @@ namespace Blackjack
         {
             throw new NotImplementedException();
         }
+
+        public int ChanceSave(int Hand)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

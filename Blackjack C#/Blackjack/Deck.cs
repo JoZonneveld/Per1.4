@@ -128,9 +128,19 @@ namespace Blackjack
             return output;
         }
 
-        public int ChanceSave(int i)
+        public int ChanceSave(int hand)
         {
-            
+            int output = 0;
+
+            for (int i = 0; i < cardList.Count; i++)
+            {
+                if (cardList[i].value + hand <= 21)
+                {
+                    output++;
+                }
+            }
+
+            return (int)Math.Round((double)(100 * output) / CardList.Count);
         }
     }
 }
