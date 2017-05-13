@@ -31,6 +31,27 @@ namespace visitor
         }
     }
 
+    class MonsterHealedVisitor : IMonsterVisitor
+    {
+        public string OnTroll(Troll troll)
+        {
+            troll.Health += 1;
+            return "Hound was Healed! It has " + troll.Health.ToString() + " health points left";
+        }
+
+        public string OnBat(Bat bat)
+        {
+            bat.Health += 3;
+            return "Bat was Healed! It has " + bat.Health.ToString() + " health points left";
+        }
+
+        public string OnHound(Hound hound)
+        {
+            hound.Health += 5;
+            return "Hound was Healed! It has " + hound.Health.ToString() + " health points left";
+        }
+    }
+
     interface IMonster
     {
         string Visit(IMonsterVisitor visitor);
@@ -75,11 +96,12 @@ namespace visitor
             monsters.Add(new Bat());
             monsters.Add(new Hound());
 
-            var monster_visitor = new MonsterAttackVisitor();
+            IMonsterVisitor monster_visitor = new MonsterAttackVisitor();
+            IMonsterVisitor monsterHealed = new MonsterHealedVisitor();
 
             foreach (var monster in monsters)
             {
-                Console.WriteLine(monster.Visit(monster_visitor));
+                Console.WriteLine(monster.Visit(monsterHealed));
             }
             Console.ReadKey();
         }
