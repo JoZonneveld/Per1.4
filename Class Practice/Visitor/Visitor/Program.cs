@@ -36,7 +36,7 @@ namespace visitor
         public string OnTroll(Troll troll)
         {
             troll.Health += 1;
-            return "Hound was Healed! It has " + troll.Health.ToString() + " health points left";
+            return "Troll was Healed! It has " + troll.Health.ToString() + " health points left";
         }
 
         public string OnBat(Bat bat)
@@ -101,6 +101,7 @@ namespace visitor
 
             foreach (var monster in monsters)
             {
+                Console.WriteLine(monster.Visit(monster_visitor));
                 Console.WriteLine(monster.Visit(monsterHealed));
             }
             Console.ReadKey();

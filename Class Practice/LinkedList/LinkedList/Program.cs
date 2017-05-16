@@ -10,9 +10,10 @@ namespace LinkedList
     {
         static void Main(string[] args)
         {
-            ILinkedList test = new Node<String>("test1", new Node<int>(1, new Node<string>("test", new Empty())));
-
-            Console.WriteLine(((Node<string>)test).Value);
+            ILinkedList<int> test = new Node<int>(1, new Node<int>(2, new Node<int>(3, new Empty<int>())));
+            
+            Console.Out.WriteLine(test);
+            
             Console.ReadKey();
         }
     }
