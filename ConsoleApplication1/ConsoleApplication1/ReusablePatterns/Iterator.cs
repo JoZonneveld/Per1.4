@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ReusablePatterns
 {
-  public interface Iterator<T>
-  {
-    Option<T> getNext();
-  }
+    public interface Iterator<T>
+    {
+        Option<T> getNext();
+    }
 
 }
