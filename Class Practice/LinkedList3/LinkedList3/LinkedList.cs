@@ -42,7 +42,7 @@ namespace LinkedList3
 
         public U Visit<U>(Func<LinkedListNode<T>> onNode, Func<T> onEmpty)
         {
-            throw new NotImplementedException();
+            return onNode
         }
     }
 }
