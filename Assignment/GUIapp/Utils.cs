@@ -49,28 +49,27 @@ namespace GUIapp
     public class List<T> : Iterator<T>
     {
         private Option<T> option;
-
-        private T value;
+        private int current = -1;
+        private T[] value = {};
 
         public Option<T> GetNext()
         {
-            return option.Visit<Option<T>>(() => { return new None<T>(); }, (x) => { return new Some<T>(value); });
+            current++;
+            return option.Visit<Option<T>>(() => { return new None<T>(); }, (x) => { return new Some<T>(value[current]); });
         }
 
         public Option<T> GetCurrent()
         {
-            return option.Visit<Option<T>>(() => { return new None<T>(); }, (x) => { return new Some<T>(value); });
+            current++;
+            return option.Visit<Option<T>>(() => { return new None<T>(); }, (x) => { return new Some<T>(value[current+1]); });
         }
 
         public void Reset()
         {
-            value = default(T);
+            current = -1;
         }
 
-        public void Add(T NewClass)
-        {
-            value = NewClass;
-        }
+        
     }
 
     public class Point
